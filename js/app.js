@@ -312,7 +312,7 @@ var Item = function(x, y) {
             this.type = "heart";
             break;
         case 1:
-            this.sprite = 'images/Selector.png';
+            this.sprite = 'images/Star.png';
             this.type = "star";
             break;
         case 2:
