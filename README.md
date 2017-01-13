@@ -1,7 +1,7 @@
 
 ##**Bug Invasion**
 
-Bug Invasion is an arcade game where bugs are taking over the universe! The object of the game is to trek through different settings while avoiding the bugs.
+Bug Invasion is an arcade game where bugs are taking over the universe! The object of the game is to trek through different environments while avoiding the bugs.
 
 ###**Access Instructions**
 1. Download the repository
