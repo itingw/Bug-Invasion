@@ -477,7 +477,7 @@ var Engine = (function(global) {
             ctx.font = "15pt Arial"
             ctx.drawImage(Resources.get("images/heart.png"), 150, 415);
             ctx.fillText("Extra Life!", 155, 600);
-            ctx.drawImage(Resources.get("images/star.png"), 305, 415);
+            ctx.drawImage(Resources.get("images/Star.png"), 305, 415);
             ctx.fillText("Invincibility!", 305, 600);
             ctx.drawImage(Resources.get("images/key.png"), 455, 415);
             ctx.fillText("Teleportation!", 455, 600);
@@ -566,9 +566,9 @@ var Engine = (function(global) {
         'images/enemy-bug.png',
         'images/char-boy.png',
         'images/heart.png',
-        'images/star.png',
+        'images/Star.png',
         'images/key.png',
-        'images/selector.png',
+        'images/Selector.png',
         'images/stone-block-tall.png'
 
     ]);

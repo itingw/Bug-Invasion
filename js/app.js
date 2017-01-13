@@ -112,7 +112,7 @@ Player.prototype.checkCollisions = function() {
             }
             if (allItems[i].type == "star") {
                 this.state = 1;
-                this.sprite = "images/star.png";
+                this.sprite = "images/Star.png";
             }
             if (allItems[i].type == "key") {
                 //  console.log("TELEPORT ME");
@@ -312,7 +312,7 @@ var Item = function(x, y) {
             this.type = "heart";
             break;
         case 1:
-            this.sprite = 'images/star.png';
+            this.sprite = 'images/Selector.png';
             this.type = "star";
             break;
         case 2:
@@ -328,7 +328,7 @@ Item.prototype.render = function() {
 var Pad = function() {
     this.x = x_coord[getRandomInt(0, 6)];
     this.y = y_coord[getRandomInt(1, 3)];
-    this.sprite = 'images/selector.png';
+    this.sprite = 'images/Selector.png';
 
     pad_coord_x = (this.x / x_step);
     pad_coord_y = (this.y / y_step) + 0.5;
