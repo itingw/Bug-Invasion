@@ -126,7 +126,7 @@ var Engine = (function(global) {
         var b = "wall-short";
         var d = "window";
         var h = "water";
-        var o = "stone-block-tall"
+        var o = "stone-block-tall";
         var x = 0;
 
         allBlockedareas = [];
@@ -467,21 +467,21 @@ var Engine = (function(global) {
             ctx.globalAlpha = 1;
             ctx.fillStyle = "white";
             ctx.strokeStyle = "white";
-            ctx.font = "bold 30pt Arial"
+            ctx.font = "bold 30pt Arial";
             ctx.fillText("How to Play:", 250, 115);
-            ctx.font = "25pt Arial"
+            ctx.font = "25pt Arial";
             ctx.fillText("  Use arrow keys", 100, 220);
             ctx.fillText("  Avoid these:", 100, 320);
             ctx.drawImage(Resources.get("images/enemy-bug.png"), 365, 200);
             ctx.fillText("  Get powerups:", 100, 420);
-            ctx.font = "15pt Arial"
+            ctx.font = "15pt Arial";
             ctx.drawImage(Resources.get("images/heart.png"), 150, 415);
             ctx.fillText("Extra Life!", 155, 600);
             ctx.drawImage(Resources.get("images/Star.png"), 305, 415);
             ctx.fillText("Invincibility!", 305, 600);
             ctx.drawImage(Resources.get("images/key.png"), 455, 415);
             ctx.fillText("Teleportation!", 455, 600);
-            ctx.font = "20pt Arial"
+            ctx.font = "20pt Arial";
             ctx.fillText("Press any key to start!", 220, 700);
         }
         //play game!
@@ -593,7 +593,7 @@ GameRestartInput = function(key) {
         ctx.clearRect(0, 0, 707, 835);
     }
 
-}
+};
 
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {

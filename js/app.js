@@ -1,11 +1,11 @@
 // Global Variables
-var grid_width = 707;
-var grid_height = 747;
+var GRID_WIDTH = 707;
+var GRID_HEIGHT = 747;
 
 //generate x coordinates for grid
 var x_coord = [],
-    columns = grid_width / 101;
-var x_step = grid_width / columns;
+    columns = GRID_WIDTH / 101;
+var x_step = GRID_WIDTH / columns;
 for (var i = 0; i < columns; i++) {
     x_coord[i] = i * x_step;
 }
@@ -13,7 +13,7 @@ for (var i = 0; i < columns; i++) {
 //generate y coordinates for grid
 var y_coord = [],
     rows = 9;
-var y_step = grid_height / rows;
+var y_step = GRID_HEIGHT / rows;
 for (var i = 0; i < rows; i++) {
     y_coord[i] = -41.5 + (i * 83);
 }
@@ -50,12 +50,12 @@ var Enemy = function(x, y) {
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    if (this.x > grid_width) {
+    if (this.x > GRID_WIDTH) {
         this.x = 0;
         this.speed = Math.random() * (200) + 100;
     } else {
         this.x = this.x + this.speed * dt;
-    };
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -126,42 +126,42 @@ Player.prototype.refresh = function() {
     this.x = player_start_X;
     this.y = player_start_Y;
     this.state = 0;
-    this.sprite = "images/char-boy.png"
-}
+    this.sprite = "images/char-boy.png";
+};
 
 Player.prototype.teleport = function() {
     this.x = teleportation[0].x;
     this.y = teleportation[0].y;
-}
+};
 
 //when the player dies, start the level over. refresh the game after lives = 0
 Player.prototype.death = function() {
     if (this.lives > 0) {
         this.lives -= 1;
         // console.log("lives: ", this.lives);
-        player.refresh();
+        this.refresh();
     }
     if (this.lives === 0) {
         allEnemies = [];
         allItems = [];
         teleportation = [];
     }
-    player.refresh();
-}
+    this.refresh();
+};
 
 //player reaches the end of the board, level + 1
 Player.prototype.win = function() {
 
     this.level += 1;
-    player.refresh();
+    this.refresh();
     //add a new enemy for each level
     spawnEnemies();
     //pick a new background type
     this.boardtype = getRandomInt(1, 11);
-    console.log("board no: ", player.boardtype);
+    console.log("board no: ", this.boardtype);
     this.winning = 1;
     ctx.clearRect(0, 0, 707, 835);
-}
+};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -171,17 +171,17 @@ Player.prototype.update = function(dt) {
     // all computers.
     this.x = this.x;
     this.y = this.y;
-}
+};
 
 // Draw the enemy on the screen, required method for game
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     this.checkCollisions();
-}
+};
 
 
 //check whether there is an obstacle in the player's way
-checkBlockedarea = function(dir) {
+Player.prototype.checkBlockedarea = function(dir) {
     //calculate the player's coordinates
     player_x_coord = player.x / x_step;
     player_y_coord = (player.y / y_step) - 0.5;
@@ -226,10 +226,10 @@ checkBlockedarea = function(dir) {
             }
             break;
     }
-}
+};
 
 Player.prototype.handleInput = function(key) {
-    var blocked = checkBlockedarea(key);
+    var blocked = this.checkBlockedarea(key);
 
     switch (key) {
         case 'left':
@@ -252,12 +252,12 @@ Player.prototype.handleInput = function(key) {
                 this.y -= y_step;
             }
             if (this.y === y_coord[0]) {
-                player.win();
+                this.win();
             }
             break;
     }
     // console.log("player", this.x, this.y);
-}
+};
 
 //create obstacles based on blocked areas matrix
 var Blockedarea = function(x, y, type) {
@@ -298,7 +298,7 @@ var Blockedarea = function(x, y, type) {
 //render the obstacles
 Blockedarea.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), x_coord[this.x], y_coord[this.y]);
-}
+};
 
 //create new item
 var Item = function(x, y) {
@@ -319,11 +319,11 @@ var Item = function(x, y) {
             this.sprite = 'images/key.png';
             this.type = "key";
     }
-}
+};
 
 Item.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 var Pad = function() {
     this.x = x_coord[getRandomInt(0, 6)];
@@ -343,11 +343,11 @@ var Pad = function() {
         pad_coord_y = (this.y / y_step) + 0.5;
         // console.log("new: ", this.x, this.y);
     }
-}
+};
 
 Pad.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 //display the # lives and level
 function infodisplay() {
@@ -372,7 +372,6 @@ function spawnEnemies() {
 }
 
 function refreshItems() {
-
     allItems = [];
     teleportation = [];
     for (var i = 0; i < getRandomInt(1, player.level); i++) {
