@@ -183,8 +183,8 @@ Player.prototype.render = function() {
 //check whether there is an obstacle in the player's way
 Player.prototype.checkBlockedarea = function(dir) {
     //calculate the player's coordinates
-    player_x_coord = player.x / x_step;
-    player_y_coord = (player.y / y_step) - 0.5;
+    player_x_coord = this.x / x_step;
+    player_y_coord = (this.y / y_step) - 0.5;
 
     var checked_sq;
     //use player's coordinates and direction to check blocked areas matrix
